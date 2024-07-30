@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # 各种路径
     # 初始化用户主界面
     MAIN_FRAME.resizable(width=False, height=False)
-    MAIN_FRAME.geometry('1280x720')
+    MAIN_FRAME.geometry('1440x900')
     MAIN_FRAME.title('发票查验和查重')
     MESSAGE_LABEL.pack(side=tk.TOP)
 

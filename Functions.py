@@ -48,7 +48,8 @@ def find_invoice(invoice_number: str):
                 if (invoice_number == current_ws.cell(row=i, column=3).value or
                         invoice_number == current_ws.cell(row=i, column=4).value):
                     result.append((invoice_number, current_ws.cell(row=i, column=6).value,
-                                   current_ws.cell(row=i, column=20).value, file_name))
+                                   current_ws.cell(row=i, column=20).value, file_name,
+                                   current_ws.cell(row=i, column=9).value))
 
     return result
 
@@ -70,12 +71,15 @@ def assemble_find_invoice_result(invoice_list: list, invoice_number: str):
     else:
         total_amount = Decimal(0)
         for each_invoice in invoice_list:
-            result += '发票号码：{}\t 发票抬头：{}\t 价税合计：{}\t 文件名称：{}\n'.format(each_invoice[0], each_invoice[1],
-                                                                                       each_invoice[2], each_invoice[3])
+            result += '发票号码：{}\t发票抬头：{}\t价税合计：{:.2f}\t开具时间：{}\t文件名称：{}\n'.format(each_invoice[0],
+                                                                                                 each_invoice[1],
+                                                                                                 each_invoice[2],
+                                                                                                 each_invoice[4],
+                                                                                                 each_invoice[3])
 
             total_amount += Decimal(each_invoice[2])
 
-        result += "上述合计金额为：{}\n".format(total_amount)
+        result += "上述合计金额为：{:.2f}\n".format(total_amount)
         return result
 
 
@@ -108,7 +112,8 @@ def write_found_invoice_to_repeat_database(invoice_list: list):
         ws.cell(row=start_row, column=1).value = each_invoice[0]
         ws.cell(row=start_row, column=2).value = each_invoice[1]
         ws.cell(row=start_row, column=3).value = each_invoice[2]
-        ws.cell(row=start_row, column=4).value = datetime.now()
+        ws.cell(row=start_row, column=4).value = each_invoice[4]
+        ws.cell(row=start_row, column=5).value = datetime.now()
         start_row += 1
 
     wb.save(Main.REPEAT_DATABASE_PATH)
