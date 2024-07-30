@@ -22,19 +22,23 @@ def find_invoice(invoice_number: str):
     result = []
 
     # 获取其中的所有XLSX文件
-    file_list = [x for x in os.listdir(Main.DATEBASE_PATH) if x.endswith('xlsx')]
+    file_list = [x for x in os.listdir(Main.DATABASE_PATH) if x.endswith('xlsx')]
 
     # print(file_list)
     # 遍历发票数据库内所有的Excel文件
     for file_name in file_list:
-        full_path = os.path.join(Main.DATEBASE_PATH, file_name)
+        full_path = os.path.join(Main.DATABASE_PATH, file_name)
         # print(full_path)
 
         # 打开每一个Excel文件
         wb = openpyxl.load_workbook(full_path)
 
-        # 遍历其中的所有表
+        # 如果是直接下载的发票数据，仅遍历信息汇总即可
         sheet_names = [x for x in wb.sheetnames if x.startswith("信息汇总")]
+
+        # # 遍历其中的所有表，适合小文件
+        # sheet_names = wb.sheetnames
+
         for sheet_name in sheet_names:
             # 在每一个表的第三列和第四列寻找相同的字符串
             current_ws = wb[sheet_name]

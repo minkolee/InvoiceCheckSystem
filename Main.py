@@ -3,7 +3,7 @@ import os
 import Functions
 
 # 路径配置
-DATEBASE_PATH = os.path.join(os.getcwd(), "发票数据库")
+DATABASE_PATH = os.path.join(os.getcwd(), "发票数据库")
 REPEAT_DATABASE_PATH = os.path.join(os.getcwd(), '查重台账.xlsx')
 
 if __name__ == '__main__':
@@ -61,13 +61,14 @@ if __name__ == '__main__':
 
     # 程序启动时在结果框体显示初始化信息
     result_string = ''
-    if not os.path.exists(DATEBASE_PATH):
+    if not os.path.exists(DATABASE_PATH):
         result_string += '无发票数据库，程序无法工作，请检查数据库是否存在\n'
 
     if not os.path.exists(REPEAT_DATABASE_PATH):
         result_string += '无查重台账，程序无法工作，请检查文件是否存在\n'
 
     RESULT_LABEL.config(text=result_string)
+
 
     # 按钮绑定的主函数，之后将主函数绑定到按钮上
     def start_check():
