@@ -72,10 +72,10 @@ def assemble_find_invoice_result(invoice_list: list, invoice_number: str):
         total_amount = Decimal(0)
         for each_invoice in invoice_list:
             result += '发票号码：{}\t发票抬头：{}\t价税合计：{:.2f}\t开具时间：{}\t文件名称：{}\n'.format(each_invoice[0],
-                                                                                                 each_invoice[1],
-                                                                                                 each_invoice[2],
-                                                                                                 each_invoice[4],
-                                                                                                 each_invoice[3])
+                                                                                                     each_invoice[1],
+                                                                                                     each_invoice[2],
+                                                                                                     each_invoice[4],
+                                                                                                     each_invoice[3])
 
             total_amount += Decimal(each_invoice[2])
 
