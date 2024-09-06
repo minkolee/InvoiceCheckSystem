@@ -69,7 +69,6 @@ if __name__ == '__main__':
 
     RESULT_LABEL.config(text=result_string)
 
-
     # 按钮绑定的主函数，之后将主函数绑定到按钮上
     def start_check():
         CHECK_INVOICE_BUTTON.config(state=tk.DISABLED)
