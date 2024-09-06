@@ -110,3 +110,4 @@ def write_found_invoice_to_repeat_database(invoice_list: list):
         start_row += 1
 
     wb.save(Main.REPEAT_DATABASE_PATH)
+    wb.close()
