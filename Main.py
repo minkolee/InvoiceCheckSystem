@@ -53,7 +53,7 @@ if __name__ == '__main__':
 
     # 初始化按钮 程序要到最后再绑定处理程序
     CHECK_INVOICE_BUTTON.pack(side=tk.TOP)
-    RESULT_LABEL.pack(side=tk.TOP, fill=tk.X, )
+    RESULT_LABEL.pack(side=tk.TOP, fill=tk.X,)
 
     # 主程序区域 需要都把元素排布好再做主程序部分
     # 两个核心变量 INVOICE_NUMBER.get() 用来获取发票号码
