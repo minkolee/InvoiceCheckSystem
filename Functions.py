@@ -28,7 +28,7 @@ def find_invoice(invoice_number: str):
     # 遍历发票数据库内所有的Excel文件
     for file_name in file_list:
         full_path = os.path.join(Main.DATABASE_PATH, file_name)
-        print(full_path)
+        # print(full_path)
 
         # 打开每一个Excel文件
         wb = openpyxl.load_workbook(full_path)
@@ -42,7 +42,7 @@ def find_invoice(invoice_number: str):
         for sheet_name in sheet_names:
             # 在每一个表的第三列和第四列寻找相同的字符串
             current_ws = wb[sheet_name]
-            print(sheet_name)
+            # print(sheet_name)
             # 只要找到就返回结果
             for i in range(2, current_ws.max_row + 1):
                 # 匹配字符串
